@@ -1,0 +1,16 @@
+<form (ngSubmit)="onSubmit()">
+
+   Id <input type="text" name="ClienteId" #ClienteId="ngModel" ngControl="ClienteId" [(ngModel)]="cliente.ClienteId" >
+   <br>
+   Nombre <input type="text" name="Nombre"  #Nombre="ngModel" ngControl="Nombre" [(ngModel)]="cliente.Nombre">
+   <br>
+   Apellido <input type="text" name="Apellido"  #Apellido="ngModel" ngControl="Apellido" [(ngModel)]="cliente.Apellido">
+   <br>  
+   Edad <input type="text" name="Edad" #Edad="ngModel" ngControl="Edad" [(ngModel)]="cliente.Edad">
+   <br>
+   <input type="submit" value="Crear Cliente">
+</form>
+
+   
+
+  
