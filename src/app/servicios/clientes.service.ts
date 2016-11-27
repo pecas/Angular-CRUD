@@ -17,16 +17,8 @@ export class ClientesService {
   }
 
   getCliente(ClienteId: number) {
-      return this._Http.get(this.baseUrl + ClienteId)
-                 .map(res => {
-                          // Muestra Error si la operacion falla
-                          alert(res.status);
-                          if (res.status < 200 || res.status >= 300) {
-                            throw new Error('La operación ha fallado - Código Status: ' + res.status);
-                          }
-                          // Devuelve la respuesta si salio todo bien
-                          else { return res.json(); }
-                  });
+      return this._Http.get(this.baseUrl + '/' + ClienteId)
+                 .map(res => res.json());
   }
 
   addCliente(cliente: ClienteModelo ) {
@@ -39,14 +31,14 @@ export class ClientesService {
 
   delCliente(ClienteId: number) {
       return this._Http.delete(this.baseUrl + '/' + ClienteId)
-                  .map(res => {
-                          // Muestra Error si la operacion falla
-                          if (res.status < 200 || res.status >= 300) {
-                            throw new Error('La operación ha fallado - Código Status: ' + res.status);
-                          }
-                          // Devuelve la respuesta si salio todo bien
-                          else { return res.json(); }
-                  });
+                  .map(res =>  res.json());
+  }
+
+  updCliente(ClienteId: number, cliente: ClienteModelo){
+    let DatosJson = JSON.stringify(cliente);
+    console.log(DatosJson);
+    let headers = new Headers({'Content-Type': 'application/json; charset=utf-8'});
+    return this._Http.put(this.baseUrl + '/' + ClienteId, DatosJson, {headers: headers});
   }
 
 }

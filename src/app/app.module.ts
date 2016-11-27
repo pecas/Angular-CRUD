@@ -10,7 +10,8 @@ import { LstClientesComponent } from './lst-clientes/lst-clientes.component';
 import { ReadClienteComponent } from './read-cliente/read-cliente.component';
 import { AddClienteComponent } from './add-cliente/add-cliente.component';
 import { UpdClienteComponent } from './upd-cliente/upd-cliente.component';
-;
+import { BuscarPipe } from './buscar.pipe';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { UpdClienteComponent } from './upd-cliente/upd-cliente.component';
     LstClientesComponent,
     ReadClienteComponent,
     AddClienteComponent,
-    UpdClienteComponent
+    UpdClienteComponent,
+    BuscarPipe
+
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,7 @@ import { UpdClienteComponent } from './upd-cliente/upd-cliente.component';
     },
    { path: '', component: LstClientesComponent },
    { path: 'add-cliente', component: AddClienteComponent },
-   { path: 'upd-cliente', component: UpdClienteComponent }
+   { path: 'upd-cliente/:ClienteId', component: UpdClienteComponent }
 ])
   ],
   providers: [],

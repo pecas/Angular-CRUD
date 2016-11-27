@@ -1,3 +1,41 @@
-<p>
-  upd-cliente works!
-</p>
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#" routerLink="/">Listado Clientes</a></li>
+  <li class="breadcrumb-item active">Actualizar Cliente</li>
+</ol>
+
+<div class="bd-example">
+
+<form (ngSubmit)="onSubmit()">
+    <div class="form-group row">
+        <label for="ClienteId" class="col-xs-1 col-form-label">Id</label>
+        <div class="col-xs-4">
+            <input class="form-control" type="text" id="ClienteId" name="ClienteId" #ClienteId="ngModel" ngControl="ClienteId" [(ngModel)]="cliente.ClienteId">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="Nombre" class="col-xs-1 col-form-label">Nombre</label>
+        <div class="col-xs-4">
+            <input class="form-control" type="text" id="Nombre" name="Nombre" #Nombre="ngModel" ngControl="Nombre" [(ngModel)]="cliente.Nombre">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="Apellido" class="col-xs-1 col-form-label">Apellido</label>
+        <div class="col-xs-4">
+            <input class="form-control" type="text" id="Apellido" name="Apellido" #Apellido="ngModel" ngControl="Apellido" [(ngModel)]="cliente.Apellido">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="Edad" class="col-xs-1 col-form-label">Edad</label>
+        <div class="col-xs-4">
+            <input class="form-control" type="text" id="Edad" name="Edad" #Edad="ngModel" ngControl="Edad" [(ngModel)]="cliente.Edad">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="offset-xs-1 col-xs-4">
+            <button type="submit" class="btn btn-outline-primary">Aceptar</button>
+        </div>
+    </div>
+</form>
+
+</div>

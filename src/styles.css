@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+ .bd-example {
+    padding: 20px;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #eeeeee;
+
+}
+
