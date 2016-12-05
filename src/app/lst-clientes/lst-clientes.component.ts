@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientesService } from '../servicios/clientes.service';
 import { ClienteModelo } from '../modelo/cliente';
-import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-lst-clientes',
@@ -12,8 +11,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class LstClientesComponent implements OnInit {
   public clientes: ClienteModelo;
   public loading;
+  public clienteseleccionado: Object = {};
 
-  constructor(private _ClientesService: ClientesService, private _route: ActivatedRoute, private _router: Router) { }
+  constructor(private _ClientesService: ClientesService) { }
 
   getClientes() {
     this._ClientesService.getClientes()
@@ -24,19 +24,14 @@ export class LstClientesComponent implements OnInit {
       );
   }
 
-  onEliminarCliente(ClienteId: number) {
-    this._ClientesService.delCliente(ClienteId).subscribe(
-    (data) => {
-      this.getClientes();
-      return true;
-      }
-      );
-  }
-
- onSelect(cli){
-   alert('entre');
-     this._router.navigate(['/upd-cliente', cli.ClienteId]);
- }
+  // onEliminarCliente(ClienteId: number) {
+  //   this._ClientesService.delCliente(ClienteId).subscribe(
+  //   (data) => {
+  //       this.getClientes();
+  //       return true;
+  //       }
+  //     );
+  // }
 
   ngOnInit() {
     this.loading = 'show';

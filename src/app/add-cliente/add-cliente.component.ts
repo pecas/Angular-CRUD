@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClienteModelo } from '../modelo/cliente';
 import { ClientesService } from '../servicios/clientes.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-cliente',
@@ -13,21 +14,38 @@ export class AddClienteComponent implements OnInit {
   public cliente: ClienteModelo;
   public status: string;
   public errorMessage: string;
+  formCliente: FormGroup;
 
-  constructor(private _clienteService: ClientesService, private _route: ActivatedRoute, private _router: Router) { }
+  constructor(private _clienteService: ClientesService,
+              private _route: ActivatedRoute,
+              private _router: Router,
+              private fb: FormBuilder) {
 
-  //  onSubmit() {
-  //  this._clienteService.addCliente(this.cliente)
-  //  .subscribe(
-  //    () => {  console.log('Cliente agregado en el componente...');
-  //     this._router.navigate(['/'])
-  //    }
-  //     );
-  //  }
+                this.formCliente = fb.group ({
+                  ClienteId:['', Validators.compose([
+                    Validators.required,
+                    Validators.pattern('[0-9]+')
+                  ])],
+                  Apellido: ['', Validators.compose([
+                    Validators.required,
+                    Validators.maxLength(10),
+                    Validators.minLength(3)
+                  ])],
+                  Nombre: ['', Validators.compose([
+                    Validators.required,
+                    Validators.maxLength(10),
+                    Validators.minLength(3)
+                  ])],
+                  Edad: ['', Validators.compose([
+                    Validators.required,
+                    Validators.pattern('[0-9]+')
+                  ])]
+                });
+               }
 
-
-   onSubmit() {
-     this._clienteService.addCliente(this.cliente)
+    onSubmit() {
+      
+      this._clienteService.addCliente(this.formCliente.value)
      .subscribe(
        x => console.log('onNext: ' + x),
        e => console.log('onError: ' + e.message),
@@ -39,8 +57,7 @@ export class AddClienteComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.cliente = new ClienteModelo(0, '', '', 0);
-    
+    // this.cliente = new ClienteModelo(null, '', '', null);
   }
 
 }

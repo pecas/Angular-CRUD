@@ -1,40 +1,87 @@
 <ol class="breadcrumb">
-  <li class="breadcrumb-item"><a href="#" routerLink="/">Listado Clientes</a></li>
-  <li class="breadcrumb-item active">Nuevo Cliente</li>
+    <li class="breadcrumb-item"><a href="#" routerLink="/">Listado Clientes</a></li>
+    <li class="breadcrumb-item active">Nuevo Cliente</li>
 </ol>
 
-<div class="bd-example">
-
-<form  (ngSubmit)="onSubmit()">
-    <div class="form-group row">
-        <label for="ClienteId" class="col-xs-1 col-form-label">Id</label>
-        <div class="col-xs-4">
-            <input class="form-control" type="text" id="ClienteId" name="ClienteId" #ClienteId="ngModel" ngControl="ClienteId" [(ngModel)]="cliente.ClienteId">
-        </div>
+<div class="card">
+    <div class="card-header bg-inverse text-white">
+        Nuevo Cliente
     </div>
-    <div class="form-group row">
-        <label for="Nombre" class="col-xs-1 col-form-label">Nombre</label>
-        <div class="col-xs-4">
-            <input class="form-control" type="text" id="Nombre" name="Nombre" #Nombre="ngModel" ngControl="Nombre" [(ngModel)]="cliente.Nombre">
-        </div>
+    <div class="card-block">
+        <form novalidate [formGroup]="formCliente" (ngSubmit)="onSubmit(formCliente)">
+            <div class="form-group row ">
+                <label for="ClienteId" class="col-xs-1 col-form-label">Id</label>
+                <div class="col-xs-4">
+                    <input class="form-control" type="text" id="ClienteId" formControlName="ClienteId" >
+                    <div *ngIf="formCliente.controls.ClienteId.errors">
+                            <div *ngIf="formCliente.get('ClienteId').touched && formCliente.get('ClienteId').hasError('required')">
+                                Campo requerido
+                            </div>
+                            <div *ngIf="formCliente.get('ClienteId').touched && formCliente.get('ClienteId').hasError('pattern')">
+                                Campo numerico
+                            </div>
+                            
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Nombre" class="col-xs-1 col-form-label">Nombre</label>
+                <div class="col-xs-4">
+                    <input class="form-control"  type="text" id="Nombre" formControlName="Nombre" >
+                    <div *ngIf="formCliente.controls.Nombre.errors">
+                            <div *ngIf="formCliente.get('Nombre').touched && formCliente.get('Nombre').hasError('required')">
+                                Campo requerido
+                            </div>
+                            <div *ngIf="formCliente.get('Nombre').touched && formCliente.get('Nombre').hasError('minlength')">
+                                Se requiere minimo 3 caracteres
+                            </div>
+                            <div *ngIf="formCliente.get('Nombre').touched && formCliente.get('Nombre').hasError('maxlength')">
+                                Se requiere maximo 10 caracteres
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Apellido" class="col-xs-1 col-form-label">Apellido</label>
+                <div class="col-xs-4">
+                    <input class="form-control"  type="text" id="Apellido" formControlName="Apellido" >
+                    <div *ngIf="formCliente.controls.Apellido.errors">
+                            <div *ngIf="formCliente.get('Apellido').touched && formCliente.get('Apellido').hasError('required')">
+                                Campo requerido
+                            </div>
+                            <div *ngIf="formCliente.get('Apellido').touched && formCliente.get('Apellido').hasError('minlength')">
+                                Se requiere minimo 3 caracteres
+                            </div>
+                            <div *ngIf="formCliente.get('Apellido').touched && formCliente.get('Apellido').hasError('maxlength')">
+                                Se requiere maximo 10 caracteres
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Edad" class="col-xs-1 col-form-label">Edad</label>
+                <div class="col-xs-4">
+                    <input class="form-control" type="text" id="Edad" formControlName="Edad" >
+                     <div *ngIf="formCliente.controls.Edad.errors">
+                            <div *ngIf="formCliente.get('Edad').touched && formCliente.get('Edad').hasError('required')">
+                                Campo requerido
+                            </div>
+                            <div *ngIf="formCliente.get('Edad').touched && formCliente.get('Edad').hasError('pattern')">
+                                Campo numerico
+                            </div>
+                            
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="offset-xs-1 col-xs-4">
+                    <button type="submit" class="btn btn-outline-primary" [disabled]="formCliente.invalid">Aceptar</button>
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="form-group row">
-        <label for="Apellido" class="col-xs-1 col-form-label">Apellido</label>
-        <div class="col-xs-4">
-            <input class="form-control" type="text" id="Apellido" name="Apellido" #Apellido="ngModel" ngControl="Apellido" [(ngModel)]="cliente.Apellido">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="Edad" class="col-xs-1 col-form-label">Edad</label>
-        <div class="col-xs-4">
-            <input class="form-control" type="text" id="Edad" name="Edad" #Edad="ngModel" ngControl="Edad" [(ngModel)]="cliente.Edad">
-        </div>
-    </div>
-    <div class="form-group row">
-        <div class="offset-xs-1 col-xs-4">
-            <button type="submit" class="btn btn-outline-primary">Aceptar</button>
-        </div>
-    </div>
-</form>
-
 </div>
+
+
+
+

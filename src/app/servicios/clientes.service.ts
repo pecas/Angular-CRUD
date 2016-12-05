@@ -36,7 +36,6 @@ export class ClientesService {
 
   updCliente(ClienteId: number, cliente: ClienteModelo){
     let DatosJson = JSON.stringify(cliente);
-    console.log(DatosJson);
     let headers = new Headers({'Content-Type': 'application/json; charset=utf-8'});
     return this._Http.put(this.baseUrl + '/' + ClienteId, DatosJson, {headers: headers});
   }
