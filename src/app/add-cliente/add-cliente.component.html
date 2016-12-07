@@ -9,65 +9,65 @@
     </div>
     <div class="card-block">
         <form novalidate [formGroup]="formCliente" (ngSubmit)="onSubmit(formCliente)">
-            <div class="form-group row ">
+            <div class="form-group row" [ngClass]="{'has-danger': !formCliente.controls['ClienteId'].valid && formCliente.controls['ClienteId'].touched}">
                 <label for="ClienteId" class="col-xs-1 col-form-label">Id</label>
                 <div class="col-xs-4">
-                    <input class="form-control" type="text" id="ClienteId" formControlName="ClienteId" >
+                    <input class="form-control form-control-danger" type="text" id="ClienteId" formControlName="ClienteId" >
                     <div *ngIf="formCliente.controls.ClienteId.errors">
-                            <div *ngIf="formCliente.get('ClienteId').touched && formCliente.get('ClienteId').hasError('required')">
-                                Campo requerido
+                            <div class="text-danger" *ngIf="formCliente.get('ClienteId').touched && formCliente.get('ClienteId').hasError('required')">
+                                <small>Campo requerido</small>
                             </div>
-                            <div *ngIf="formCliente.get('ClienteId').touched && formCliente.get('ClienteId').hasError('pattern')">
-                                Campo numerico
+                            <div class="text-danger" *ngIf="formCliente.get('ClienteId').touched && formCliente.get('ClienteId').hasError('pattern')">
+                               <small>Campo numerico</small> 
                             </div>
                             
                     </div>
                 </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row" [ngClass]="{'has-danger': !formCliente.controls['Nombre'].valid && formCliente.controls['Nombre'].touched}">
                 <label for="Nombre" class="col-xs-1 col-form-label">Nombre</label>
                 <div class="col-xs-4">
-                    <input class="form-control"  type="text" id="Nombre" formControlName="Nombre" >
+                    <input class="form-control form-control-danger"  type="text" id="Nombre" formControlName="Nombre" >
                     <div *ngIf="formCliente.controls.Nombre.errors">
-                            <div *ngIf="formCliente.get('Nombre').touched && formCliente.get('Nombre').hasError('required')">
-                                Campo requerido
+                            <div class="text-danger" *ngIf="formCliente.get('Nombre').touched && formCliente.get('Nombre').hasError('required')">
+                               <small>Campo requerido</small>
                             </div>
-                            <div *ngIf="formCliente.get('Nombre').touched && formCliente.get('Nombre').hasError('minlength')">
-                                Se requiere minimo 3 caracteres
+                            <div class="text-danger" *ngIf="formCliente.get('Nombre').touched && formCliente.get('Nombre').hasError('minlength')">
+                                <small>Se requiere minimo 3 caracteres</small> 
                             </div>
-                            <div *ngIf="formCliente.get('Nombre').touched && formCliente.get('Nombre').hasError('maxlength')">
-                                Se requiere maximo 10 caracteres
+                            <div class="text-danger" *ngIf="formCliente.get('Nombre').touched && formCliente.get('Nombre').hasError('maxlength')">
+                              <small>Se requiere maximo 10 caracteres</small>  
                             </div>
                     </div>
                 </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row" [ngClass]="{'has-danger': !formCliente.controls['Apellido'].valid && formCliente.controls['Apellido'].touched}">
                 <label for="Apellido" class="col-xs-1 col-form-label">Apellido</label>
                 <div class="col-xs-4">
-                    <input class="form-control"  type="text" id="Apellido" formControlName="Apellido" >
+                    <input class="form-control form-control-danger"  type="text" id="Apellido" formControlName="Apellido" >
                     <div *ngIf="formCliente.controls.Apellido.errors">
-                            <div *ngIf="formCliente.get('Apellido').touched && formCliente.get('Apellido').hasError('required')">
-                                Campo requerido
+                            <div class="text-danger" *ngIf="formCliente.get('Apellido').touched && formCliente.get('Apellido').hasError('required')">
+                               <small>Campo requerido</small>
                             </div>
-                            <div *ngIf="formCliente.get('Apellido').touched && formCliente.get('Apellido').hasError('minlength')">
-                                Se requiere minimo 3 caracteres
+                            <div class="text-danger" *ngIf="formCliente.get('Apellido').touched && formCliente.get('Apellido').hasError('minlength')">
+                              <small>Se requiere minimo 3 caracteres</small>  
                             </div>
-                            <div *ngIf="formCliente.get('Apellido').touched && formCliente.get('Apellido').hasError('maxlength')">
-                                Se requiere maximo 10 caracteres
+                            <div class="text-danger" *ngIf="formCliente.get('Apellido').touched && formCliente.get('Apellido').hasError('maxlength')">
+                                <small>Se requiere maximo 10 caracteres</small>  
                             </div>
                     </div>
                 </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row" [ngClass]="{'has-danger': !formCliente.controls['Edad'].valid && formCliente.controls['Edad'].touched}">
                 <label for="Edad" class="col-xs-1 col-form-label">Edad</label>
                 <div class="col-xs-4">
-                    <input class="form-control" type="text" id="Edad" formControlName="Edad" >
+                    <input class="form-control form-control-danger" type="text" id="Edad" formControlName="Edad" >
                      <div *ngIf="formCliente.controls.Edad.errors">
-                            <div *ngIf="formCliente.get('Edad').touched && formCliente.get('Edad').hasError('required')">
-                                Campo requerido
+                            <div class="text-danger" *ngIf="formCliente.get('Edad').touched && formCliente.get('Edad').hasError('required')">
+                                <small>Campo requerido</small>
                             </div>
-                            <div *ngIf="formCliente.get('Edad').touched && formCliente.get('Edad').hasError('pattern')">
-                                Campo numerico
+                            <div class="text-danger" *ngIf="formCliente.get('Edad').touched && formCliente.get('Edad').hasError('pattern')">
+                                <small>Campo numerico</small>
                             </div>
                             
                     </div>

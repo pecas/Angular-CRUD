@@ -27,8 +27,8 @@ export class LstClientesComponent implements OnInit {
       );
   }
 
-  EliminacionCliente(event): void{
-    if (event.eliminado === true) {
+  EliminacionCliente(fueEliminado): void{
+    if (fueEliminado === true) {
       this.getClientes();
     }
   }

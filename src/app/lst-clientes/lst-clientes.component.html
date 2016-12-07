@@ -32,7 +32,7 @@
 			<td>{{cli.Nombre}}</td>
 			<td>{{cli.Edad}}</td>
 			<td>
-				<a href="#" data-toggle="modal" data-target="#gridSystemModal" (click)="clienteseleccionado = cli"  > <i class="fa fa-trash" aria-hidden="true"></i></a> &nbsp;
+				<a href="#" data-toggle="modal" data-target="#gridSystemModal" (click)="clienteseleccionado = cli"> <i class="fa fa-trash" aria-hidden="true"></i></a> &nbsp;
 				<a href="" [routerLink]="['/upd-cliente', cli.ClienteId]" ><i class="fa fa-pencil" aria-hidden="true"></i> </a>
 			</td>
 		</tr>

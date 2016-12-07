@@ -24,7 +24,7 @@ onEliminarCliente(ClienteId: number) {
        () => {
           console.log('Cliente Eliminado...');
           jQuery('#gridSystemModal').modal('hide');
-          this.clienteEliminado.emit({eliminado: true});
+          this.clienteEliminado.emit(true);
        }
       );
   }
