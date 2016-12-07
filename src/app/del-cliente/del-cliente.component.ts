@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ClientesService } from '../servicios/clientes.service';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router } from '@angular/router';
 declare var jQuery: any;
 
 @Component({
@@ -10,6 +10,7 @@ declare var jQuery: any;
 })
 export class DelClienteComponent implements OnInit {
   @Input('datos') datos: any;
+  @Output() clienteEliminado = new EventEmitter();
  
   constructor(private _ClientesService: ClientesService, private _router: Router) { }
 
@@ -18,12 +19,15 @@ export class DelClienteComponent implements OnInit {
 
 onEliminarCliente(ClienteId: number) {
     this._ClientesService.delCliente(ClienteId).subscribe(
-    (data) => {
-      //  this.getClientes();
-       jQuery('#gridSystemModal').modal('hide');
-       // this._router.navigate(['/']);
-        return true;
-        }
+        x => console.log('onNext: ' + x),
+        e => console.log('onError: ' + e.message),
+       () => {
+          console.log('Cliente Eliminado...');
+          jQuery('#gridSystemModal').modal('hide');
+          this.clienteEliminado.emit({eliminado: true});
+       }
       );
   }
 }
+
+

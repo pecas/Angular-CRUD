@@ -37,5 +37,5 @@
 			</td>
 		</tr>
 	</tbody>
-	<app-del-cliente [datos]="clienteseleccionado"></app-del-cliente>
+	<app-del-cliente [datos]="clienteseleccionado" (clienteEliminado)="EliminacionCliente($event)"></app-del-cliente>
 </table>

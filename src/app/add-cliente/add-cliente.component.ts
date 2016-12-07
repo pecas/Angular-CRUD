@@ -44,7 +44,6 @@ export class AddClienteComponent implements OnInit {
                }
 
     onSubmit() {
-      
       this._clienteService.addCliente(this.formCliente.value)
      .subscribe(
        x => console.log('onNext: ' + x),

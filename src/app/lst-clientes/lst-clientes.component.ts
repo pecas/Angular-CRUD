@@ -9,7 +9,7 @@ import { ClienteModelo } from '../modelo/cliente';
   providers: [ClientesService]
 })
 export class LstClientesComponent implements OnInit {
-  public clientes: ClienteModelo;
+  public clientes: ClienteModelo[];
   public loading;
   public clienteseleccionado: Object = {};
 
@@ -18,20 +18,20 @@ export class LstClientesComponent implements OnInit {
   getClientes() {
     this._ClientesService.getClientes()
       .subscribe(
-      data => { this.clientes = data;
-                this.loading = 'hide';
-               }
+        x => this.clientes = x,
+        e => console.log('onError: ' + e.message),
+       () => {
+         console.log('Clientes Listados Ok...');
+                 this.loading = 'hide';
+       }
       );
   }
 
-  // onEliminarCliente(ClienteId: number) {
-  //   this._ClientesService.delCliente(ClienteId).subscribe(
-  //   (data) => {
-  //       this.getClientes();
-  //       return true;
-  //       }
-  //     );
-  // }
+  EliminacionCliente(event): void{
+    if (event.eliminado === true) {
+      this.getClientes();
+    }
+  }
 
   ngOnInit() {
     this.loading = 'show';
